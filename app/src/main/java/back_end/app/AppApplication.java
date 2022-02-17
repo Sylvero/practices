@@ -2,15 +2,22 @@ package back_end.app;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.sql.*;
+
 @SpringBootApplication
 public class AppApplication {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         SpringApplication.run(AppApplication.class, args);
-    }
+
+
+
+        }
     private int id;
     private String name;
     private String surname;
+
+
 
     public AppApplication() {
     }
