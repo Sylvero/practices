@@ -1,6 +1,6 @@
 import { Identifiers } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { GetApiService } from '../get-api.service';
+//import { GetApiService } from '../get-api.service';
 
 @Component({
   selector: 'app-home-page',
@@ -10,19 +10,20 @@ import { GetApiService } from '../get-api.service';
 export class HomePageComponent implements OnInit {
     public object: any;
 
-  constructor(private api: GetApiService) { 
+  constructor() { 
      
   }
 
   ngOnInit(): void {
     
-    
+    /*
     this.api.apiCall().subscribe((data)=>{console.warn("get api data",data);
     this.object = Object.values(data)[2];
-    
     }
   );
+  */
       
+
   }
 
 }

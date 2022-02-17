@@ -1,0 +1,78 @@
+<div class="spacer"></div>
+
+
+
+<table mat-table [dataSource]="dataSource[0]" class="mat-elevation-z8" >
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- idMeeting Column -->
+    <ng-container matColumnDef="idMeeting">
+      <th mat-header-cell *matHeaderCellDef> Id spotkania </th>
+      <td mat-cell *matCellDef="let element"> {{element.idMeeting}} </td>
+    </ng-container>
+  
+    <!-- date Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Data </th>
+      <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+    </ng-container>
+  
+    <!-- hour Column -->
+    <ng-container matColumnDef="hour">
+      <th mat-header-cell *matHeaderCellDef> Godzina </th>
+      <td mat-cell *matCellDef="let element"> {{element.hour}} </td>
+    </ng-container>
+  
+    <!-- minutes Column -->
+    <ng-container matColumnDef="minutes">
+      <th mat-header-cell *matHeaderCellDef> Minuty </th>
+      <td mat-cell *matCellDef="let element"> {{element.minutes}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="studentId">
+      <th mat-header-cell *matHeaderCellDef> Id studenta </th>
+      <td mat-cell *matCellDef="let element"> {{element.studentId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="studentName">
+      <th mat-header-cell *matHeaderCellDef> Imie studenta </th>
+      <td mat-cell *matCellDef="let element"> {{element.studentName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="studentSurname">
+      <th mat-header-cell *matHeaderCellDef> Nazwisko studenta </th>
+      <td mat-cell *matCellDef="let element"> {{element.studentSurname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="employeeId">
+      <th mat-header-cell *matHeaderCellDef> Id wykładowcy </th>
+      <td mat-cell *matCellDef="let element"> {{element.employeeId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="employeeName">
+      <th mat-header-cell *matHeaderCellDef> Imie wykładowcy </th>
+      <td mat-cell *matCellDef="let element"> {{element.employeeName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="employeeSurname">
+      <th mat-header-cell *matHeaderCellDef> Nazwisko wykładowcy </th>
+      <td mat-cell *matCellDef="let element"> {{element.employeeSurname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="consultationId">
+      <th mat-header-cell *matHeaderCellDef> iD konsultacji</th>
+      <td mat-cell *matCellDef="let element"> {{element.consultationId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Anuluj">
+      <th mat-header-cell *matHeaderCellDef> Anuluj</th>
+      <td mat-cell *matCellDef="let element"><button mat-raised-button  color="primary" (click)="cancel(element.consultationId)" >Anuluj</button> </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedCol"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedCol;"></tr>
+  </table>
+  <div class="spacer"></div>
+<router-outlet></router-outlet>

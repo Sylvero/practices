@@ -1,0 +1,92 @@
+<!-- <h2 *ngIf= "result" style="text-align: center;">Uzytkownik {{result}}</h2> -->
+<span fxLayoutAlign="center"><h2>Jakiego użytkownika chcesz dodac?</h2></span>
+<div id="buttons" fxLayoutAlign="center" >
+    <button mat-raised-button  color="primary" (click)="showEmploy()" type="button">Administrator/Wykładowca</button>
+    <button mat-raised-button  color="primary" (click)="showStud()" type="button">Student</button>
+    
+
+
+</div>
+<ng-container >
+<div  fxLayoutAlign="center " >
+    <mat-card id="cont" #firstForm fxFlex="40" class="login-card" [style.display]="showStuden()">
+        <mat-toolbar color="primary">Dodaj użytkownika</mat-toolbar>
+        <form (ngSubmit)='onSubmitStudent()' fxLayout="column" class="login-form" [formGroup]="studentForm" >
+            <mat-form-field>
+                <input matInput formControlName="studentName" placeholder="imie" required  >
+                <mat-error *ngIf="studentForm.get('studentName')?.invalid && studentForm.get('studentName')?.touched">Pole imie nie może byc puste</mat-error>
+            </mat-form-field>
+               
+            <mat-form-field>
+                <input matInput  formControlName="studentSurname" placeholder="nazwisko" required>
+                <mat-error *ngIf="studentForm.get('studentSurname')?.invalid && studentForm.get('studentSurname')?.touched">Pole nazwisko nie może byc puste</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput formControlName="studentLogin" placeholder="login" required  >
+                <mat-error *ngIf="studentForm.get('studentLogin')?.invalid && studentForm.get('studentLogin')?.touched">Pole login nie może byc puste</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput formControlName="studentPassword" placeholder="hasło" required  >
+                <mat-error *ngIf="studentForm.get('studentPassword')?.invalid && studentForm.get('studentPassword')?.touched">Pole haslo nie moze byc puste</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput formControlName="studentIndex" placeholder="index" required  minlength="5" maxlength="5">
+                <mat-error *ngIf="studentForm.get('studentIndex')?.invalid && studentForm.get('studentIndex')?.touched">Pole index nie moze byc puste,liczba znakow 6-6</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput formControlName="studentEmail" placeholder="email" required  type="email">
+                <mat-error *ngIf="studentForm.get('studentEmail')?.invalid && studentForm.get('studentEmail')?.touched">Pole email nie moze byc puste</mat-error>
+            </mat-form-field>
+            <button mat-raised-button  color="primary" type="submit" [disabled]="!studentForm.valid">Dodaj</button>
+        </form>
+    </mat-card>
+</div> 
+ </ng-container>
+ 
+
+ <ng-container  >
+    <div  fxLayoutAlign="center " >
+        <mat-card id="cont" #firstForm fxFlex="40" class="login-card" [style.display]="showEmploye()">
+            <mat-toolbar color="primary">Dodaj użytkownika</mat-toolbar>
+            <form (ngSubmit)='onSubmitEmployee()' fxLayout="column" class="login-form" [formGroup]="employeeForm" >
+                <mat-form-field>
+                    <input matInput formControlName="employeeName" placeholder="imie" required  >
+                    <mat-error *ngIf="employeeForm.get('employeeName')?.invalid && employeeForm.get('employeeName')?.touched">Pole imie nie moze byc puste</mat-error>
+                </mat-form-field>
+                   
+                <mat-form-field>
+                    <input matInput  formControlName="employeeSurname" placeholder="nazwisko" required>
+                    <mat-error *ngIf="employeeForm.get('employeeSurname')?.invalid && employeeForm.get('employeeSurname')?.touched">Pole nazwisko nie moze byc puste</mat-error>
+                </mat-form-field>
+    
+                <mat-form-field>
+                    <input matInput formControlName="employeeLogin" placeholder="login" required  >
+                    <mat-error *ngIf="employeeForm.get('employeeLogin')?.invalid && employeeForm.get('employeeLogin')?.touched">Pole login nie moze byc puste</mat-error>
+                </mat-form-field>
+    
+                <mat-form-field>
+                    <input matInput formControlName="employeePassword" placeholder="hasło" required  >
+                    <mat-error *ngIf="employeeForm.get('employeePassword')?.invalid && employeeForm.get('employeePassword')?.touched">Pole haslo nie moze byc puste</mat-error>
+                </mat-form-field>
+
+                <mat-radio-group formControlName="employeePrivilege" >
+                    <mat-radio-button value="Wykladowca" >Wykładowca</mat-radio-button>
+                    <mat-radio-button value="Administrator">Administrator</mat-radio-button>
+                    <mat-error *ngIf="employeeForm.get('employeePrivilege')?.invalid && employeeForm.get('employeePrivilege')?.touched">Rola pracownika nie może być pusta</mat-error>
+                  </mat-radio-group>
+    
+                <mat-form-field>
+                    <input matInput formControlName="employeeEmail" placeholder="email" required  >
+                    <mat-error *ngIf="employeeForm.get('employeeEmail')?.invalid && employeeForm.get('employeeEmail')?.touched">Pole email nie może być puste</mat-error>
+                    
+                </mat-form-field>
+                <button mat-raised-button  color="primary" type="submit" [disabled]="!employeeForm.valid">Dodaj</button>
+            </form>
+        </mat-card>
+    </div> 
+     </ng-container>
+<router-outlet></router-outlet>

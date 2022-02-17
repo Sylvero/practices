@@ -1,0 +1,60 @@
+
+<span fxLayoutAlign="center"><h2>{{result}}</h2></span>
+<div  fxLayoutAlign="center " >
+    <mat-card  fxFlex="40" class="login-card" >
+        <mat-toolbar color="primary">Dodaj konsultacje</mat-toolbar>
+        <form  fxLayout="column" class="login-form" [formGroup]="consultationForm" (ngSubmit)='onSubmit()'>
+            <mat-form-field appearance="fill">
+                <input matInput [matDatepicker]="date" formControlName="date"  [min]="minDate" required >
+                <mat-error *ngIf="consultationForm.get('date').invalid && consultationForm.get('date').touched">Pole data nie może być puste</mat-error>
+                <mat-datepicker-toggle [for]="date" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #date></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Wybierz godzine</mat-label>
+                <mat-select formControlName="hour" required>
+                    <mat-option [value]="hour" *ngFor="let hour of hours" >{{hour}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="consultationForm.get('hour').invalid && consultationForm.get('hour').touched">Pole godzina nie może być puste</mat-error>
+                </mat-form-field>
+
+                
+              
+            <mat-form-field appearance="fill">
+            <mat-label>Wybierz czas trwania</mat-label>
+            <mat-select formControlName="duration" required>
+                <mat-option value="0.50">0.5h</mat-option>
+                <mat-option value="1" >1h </mat-option>
+                <mat-option value="1.5">1.5h</mat-option>
+                <mat-option value="2">2h</mat-option>
+                <mat-option value="3">3h</mat-option>
+            </mat-select>
+            <mat-error *ngIf="consultationForm.get('duration').invalid && consultationForm.get('duration').touched">Pole czas trwania nie może być puste</mat-error>
+            
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Wybierz odstęp pomiędzy następnymi studentami</mat-label>
+                <mat-select formControlName="gap" required>
+                    <mat-option value="5">5 min</mat-option>
+                    <mat-option value="10">10 min </mat-option>
+                    <mat-option value="15">15 min</mat-option>
+                    <mat-option value="20">20 min</mat-option>
+                    <mat-option value="30">30 min</mat-option>
+            </mat-select>
+            <mat-error *ngIf="consultationForm.get('gap').invalid && consultationForm.get('gap').touched">Pole odstęp między studentami nie może być puste</mat-error>
+            </mat-form-field>
+               
+            <mat-form-field>
+                <input matInput  formControlName="room" placeholder="Pokój" required>
+                <mat-error *ngIf="consultationForm.get('room').invalid && consultationForm.get('room').touched">Pole pokój nie może być puste</mat-error>
+            </mat-form-field>
+
+            
+            <button mat-raised-button  color="primary" type="submit" [disabled]="!consultationForm.valid">Dodaj</button>
+        </form>
+    </mat-card>
+</div> 
+<div class="spacer"></div>
+<router-outlet></router-outlet>

@@ -1,17 +1,21 @@
+<app-navbar></app-navbar>
+
 <div fxLayoutAlign="center center" fxFlexFill >
     <mat-card fxFlex="30" class="login-card">
         <mat-toolbar color="primary">Zaloguj się</mat-toolbar>
         
-        <form (ngSubmit)='onSubmit()' fxLayoutAlign="stretch" fxLayout="column" class="login-form" #userForm="ngForm" >
-            {{userForm.value | json}}
+        <form (ngSubmit)='onSubmit()' fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="loginForm" >
+            
             <mat-form-field>
-                <input matInput name = "login" required  placeholder="Login" [(ngModel)]="userModel.login" ngModel>
+                <input matInput name = "login" required  placeholder="Login" formControlName="login">
+                <mat-error *ngIf="loginForm.get('login').invalid && loginForm.get('login').touched">Pole login nie może być puste</mat-error>
             </mat-form-field>
                
             <mat-form-field>
-                <input matInput required name = "password"  type="password" placeholder="Haslo" [(ngModel)]="userModel.password" ngModel>
+                <input matInput required name = "password"  type="password" placeholder="Haslo" formControlName="password">
+                <mat-error *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">Pole haslo nie może być puste</mat-error>
             </mat-form-field>
-            <button mat-raised-button  color="primary" type="submit">Zaloguj</button>
+            <button mat-raised-button  color="primary" type="submit" [disabled]="!loginForm.valid">Zaloguj</button>
         </form>
     </mat-card>
 </div>  

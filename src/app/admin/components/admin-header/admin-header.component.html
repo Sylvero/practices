@@ -1,0 +1,12 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">  
+    <span><mat-icon>language</mat-icon>Aplikacja</span>
+
+    <div class="spacer"></div>
+
+    <a mat-button routerLink="/admin/home" routerLinkActive="active"><mat-icon>home</mat-icon> Strona domowa</a>
+    <a mat-button routerLink="/admin/addUser" routerLinkActive="active"><mat-icon>person_add</mat-icon> Dodaj użytkownika</a>
+    <a mat-button routerLink="/admin/users" routerLinkActive="active"><mat-icon>people</mat-icon> Użytkownicy</a>
+    <a mat-raised-button color="accent" (click)="logout()" >Wyloguj <mat-icon>logout</mat-icon></a>
+    
+
+</mat-toolbar>

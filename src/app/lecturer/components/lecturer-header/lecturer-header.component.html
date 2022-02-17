@@ -1,0 +1,12 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">  
+    <span><mat-icon>language</mat-icon>Aplikacja</span>
+
+    <div class="spacer"></div>
+
+    <a mat-button routerLink="/lecturer/home" routerLinkActive="active"><mat-icon>home</mat-icon> Strona domowa</a>
+    <a mat-button routerLink="/lecturer/consultation" routerLinkActive="active"><mat-icon>question_answer</mat-icon> Konsultacje</a>
+    <a mat-button routerLink="/lecturer/myConsultation" routerLinkActive="active"><mat-icon>question_answer</mat-icon> Moje Konsultacje</a>
+    <a mat-raised-button color="accent"   (click)="logout()">Wyloguj <mat-icon>logout</mat-icon></a>
+    
+
+</mat-toolbar>
